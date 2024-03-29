@@ -1,0 +1,15 @@
+令和４年度DPC導入の影響評価に係る調査「退院患者調査」の結果報告について
+https://www.mhlw.go.jp/stf/shingi2/newpage_39119.html
+
+診断群分類（DPC）電子点数表について
+https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000198757_00003.html
+
+
+3.医療施設調査 / 令和４年医療施設（動態）調査 二次医療圏・市区町村編
+　都道府県-二次医療圏-市町村マスタとして使用
+https://www.e-stat.go.jp/stat-search/database?page=1&layout=datalist&toukei=00450021&tstat=000001030908&cycle=7&tclass1=000001209631&tclass2=000001209634&statdisp_id=0004012014&result_page=1&tclass3val=0&metadata=1&data=1
+
+DBをクリック/ダウンロードをクリック/デフォルトのままダウンロード→形式が前と変わってしまった。
+前回データとして保存されていたのは令和4年10月のもの。前回データを使用することにする。
+
+
