@@ -674,6 +674,9 @@ mdc26_mst.describe()
 # %%
 mdc26_mst["mdc2"] = mdc26_mst["mdc2"].astype(int)
 
+# %% 
+# 差分用の行を作成
+
 # %%
 # mdc26_mst.to_csv("data/mdc26_mst.csv", encoding="cp932", index=False)
 mdc26_mst.to_csv(

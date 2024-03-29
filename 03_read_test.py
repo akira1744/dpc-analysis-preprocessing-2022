@@ -41,7 +41,7 @@ hp
 
 # %%
 
-select_hp = hp[hp["region"] == "東北地方"]
+select_hp = hp[hp["region"] == "関東地方"]
 select_hpcd = select_hp["hpcd"]
 
 # %%
@@ -61,6 +61,10 @@ LEFT JOIN mdc2_mst ON mdc2d.mdc2 = mdc2_mst.mdc2
 mdc2d = pd.read_sql(sql, conn)
 mdc2d
 # %%
+# hpnameが埼玉石心会病院のデータをチェック
+mdc2d[mdc2d["hpname"] == "埼玉石心会病院"]
+
+# %%
 # mdc6dの取得
 sql = f"""
 SELECT
@@ -78,6 +82,10 @@ LEFT JOIN mdc2_mst ON mdc26_mst.mdc2 = mdc2_mst.mdc2
 """
 mdc6d = pd.read_sql(sql, conn)
 mdc6d
+
+# %%
+# hpnameが埼玉石心会病院のデータのvalueの合計値をチェック
+mdc6d[mdc6d["hpname"] == "埼玉石心会病院"]["value"].sum()
 
 # %%
 ope_mst = pd.read_sql("SELECT * FROM ope_mst", conn)
@@ -110,7 +118,7 @@ SELECT
     ,oped.mdc6
     ,mdc_mst.mdc6name
     ,oped.ope
-    ,ope_mst.opename
+    ,coalesce(ope_mst.opename,"0 差分") as opename
     ,oped.value
     ,hp.bed
 FROM oped
@@ -123,6 +131,11 @@ LEFT JOIN mdc_mst ON oped.mdc6 = mdc_mst.mdc6;
 oped = pd.read_sql(sql, conn)
 oped["hp"] = " "
 oped
+# %%
+oped
+# %%
+# hpnameが埼玉石心会病院のデータのvalueの合計値をチェック
+oped[oped["hpname"] == "埼玉石心会病院"]["value"].sum()
 # %%
 oped
 # %%

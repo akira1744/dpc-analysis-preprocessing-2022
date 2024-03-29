@@ -87,11 +87,65 @@ mdc2_mst.to_sql("mdc2_mst", conn, if_exists="replace", index=False)
 conn.execute("CREATE INDEX idx_mdc2 ON mdc2_mst (mdc2)")
 
 # %%
-mdc26_mst = pd.read_csv(
+mdc26_mst1 = pd.read_csv(
     os.path.join(output_dir, "mdc26_mst.csv"),
     encoding="cp932",
     dtype={"mdc2": int, "mdc6": "category", "mdc6name": "category"},
 )
+mdc26_mst1
+
+# %%
+# 差分用の行を作成
+
+mdc26_mst2 = pd.DataFrame(
+    data=dict(
+        mdc2=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+        mdc6=[
+            "010000",
+            "020000",
+            "030000",
+            "040000",
+            "050000",
+            "060000",
+            "070000",
+            "080000",
+            "090000",
+            "100000",
+            "110000",
+            "120000",
+            "130000",
+            "140000",
+            "150000",
+            "160000",
+            "170000",
+            "180000",
+        ],
+        mdc6name=[
+            "010000 差分",
+            "020000 差分",
+            "030000 差分",
+            "040000 差分",
+            "050000 差分",
+            "060000 差分",
+            "070000 差分",
+            "080000 差分",
+            "090000 差分",
+            "100000 差分",
+            "110000 差分",
+            "120000 差分",
+            "130000 差分",
+            "140000 差分",
+            "150000 差分",
+            "160000 差分",
+            "170000 差分",
+            "180000 差分",
+        ],
+    )
+)
+
+# %%
+# mdc26_mst1とmdc26_mst2を結合
+mdc26_mst = pd.concat([mdc26_mst1, mdc26_mst2], ignore_index=True)
 mdc26_mst
 
 # %%
@@ -194,7 +248,6 @@ oped["value"] = oped["value"].round(1)
 # month列をdrop
 oped = oped.drop(columns="month")
 oped
-
 
 # %%
 # opedテーブルを作成
